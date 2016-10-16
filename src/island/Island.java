@@ -2,20 +2,12 @@ package island;
 
 import java.util.*;
 
-/**
- * Created by Мария on 12.10.2016.
- */
+
 public class Island {
     private final int MAX_HEIGHT = 1000;
     private int height;
     private int width;
     private Cell[][] matrix;
-
-    /*public island.Island(int height, int width) {
-        this.height = height;
-        this.width = width;
-        this.matrix = new Cell[height][width];
-    }*/
 
     public Island(int[][] matrix) {
         height = matrix.length + 2;
@@ -52,8 +44,6 @@ public class Island {
                 addWater(cell);
             }
         }
-
-        printFloodedIsland();
     }
 
     private void addWater(Cell cell) {
@@ -70,7 +60,6 @@ public class Island {
                     int currentCellFloodedWaterLevel = currentCell.getFloodedWaterLevel();
                     int nbFloodedWaterLevel = nb.getFloodedWaterLevel();
                     if (nbFloodedWaterLevel < currentCellFloodedWaterLevel) {
-                        System.out.println("here");
                         return;
                     }
                     if (nbFloodedWaterLevel < minValue && nbFloodedWaterLevel != currentCellFloodedWaterLevel) {
@@ -84,8 +73,6 @@ public class Island {
                 visitedCells.add(currentCell);
             }
         }
-
-        //System.out.println(minValue);
 
         final int finalMinValue = minValue;
         visitedCells.forEach(cell1 -> cell1.setFloodedWaterLevel(finalMinValue));
@@ -159,7 +146,7 @@ public class Island {
         }
     }
 
-    private void printFloodedIsland() {
+    public void printFloodedIsland() {
         System.out.println("----------------------------------");
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
