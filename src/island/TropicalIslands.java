@@ -1,9 +1,6 @@
 package island;
 
-import island.Island;
-
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +30,7 @@ public class TropicalIslands {
 
             islands.add(new Island(matrix));
         }
-
+        scanner.close();
         islands.forEach(island -> island.flood());
         islands.forEach(island -> output.println(island.getResult()));
     }
